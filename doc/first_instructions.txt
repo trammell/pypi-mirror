@@ -1,0 +1,13 @@
+
+
+CONGRATULATIONS! You have your own PyPi mirror infrastructure ready to go!
+
+You should execute the following command for downloading all packages from PyPi:
+
+    bin/pypimirror -I -c -v etc/pypi/pypimirror.cfg
+
+NOTE: It will take a very long time, so I recommend you to go out for shopping 
+with your girlfriend, take a coffee, take beers with your friends, plant a tree, 
+because when you will be back the download process will be still in progress.
+
+

@@ -1,0 +1,57 @@
+=====================
+PyPi Mirror Installer
+=====================
+
+The PyPi mirror installer is a source-installation kit that installs a PyPi mirror and all its dependencies. 
+
+Feedback/bugs to: blutgens@gmail.com
+
+
+Installation Instructions
+=========================
+The installer will compile Nginx and it will install required python eggs from Pypi. (See "Dependencies" below.)
+
+PLEASE NOTE: You have the option to run the installation as root or a normal user.
+
+First of all, edit buildout.cfg and modify the following parameters:
+
+ * 'mirror-base' at 'repository' section. This is the directory where all packages will be downloaded. Example:
+    mirror-base = /var/www/pypi
+
+ * 'mirror-url' at 'mirror-config'. That URL will be the URL for access to your PyPi mirror. 
+Example:
+    url = http://pypi.python.org
+
+Once you have installed all required dependencies, you can continue with the installation process. So you execute the following command:
+    >>python2.6 bootstrap.py
+
+You should have the buildout environment ready to go. Now, you must execute the buildout installation:
+    >> bin/buildout
+
+At the end, you should have the 'bin/pypimirror' binary. Now it's time to start downloading packages from PyPi executing the following command:
+    >> bin/pypimirror -I -c -v etc/pypi/pypimirror.cfg
+
+Dependencies
+============
+The following packages are necessary to run buildout and install the PyPi mirror.
+1) setuptools
+2) gcc
+3) GNU make
+4) libpcre3-dev
+5) libssl-dev
+
+
+Post-installation instructions
+==============================
+Now, we have our PyPi mirror ready to go. We must to run the following command:
+
+    >> $HOME/bin/pypimirror -I -c -v $HOME/etc/pypi/pypimirror.cfg
+
+This command will start downloading all packages from PyPi. When finished an index.html file will be generated containing an index with all downloaded packages.
+
+You'll need to configure a webserver to point at the mirror-base directory, I'll leave that as an excercise for you, a simple apache vhost should do it.
+
+Mirror update
+=============
+In order to update your mirror simply run bin/pypymirror -U etc/pypimirror.cfg works great as a nightly cronjob =) On a redhat box just drop a simple shell script in /etc/cron.hourly
+
