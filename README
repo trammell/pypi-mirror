@@ -9,7 +9,7 @@ Feedback/bugs to: blutgens@gmail.com
 
 Installation Instructions
 =========================
-The installer will compile Nginx and it will install required python eggs from Pypi. (See "Dependencies" below.)
+The installer will install required python eggs from Pypi. 
 
 PLEASE NOTE: You have the option to run the installation as root or a normal user.
 
